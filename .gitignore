@@ -25,3 +25,7 @@ Desktop.ini
 CLAUDE.md
 docs/
 archived/
+
+# VitePress
+.vitepress/dist/
+.vitepress/cache/
