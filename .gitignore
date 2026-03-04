@@ -19,3 +19,9 @@ Desktop.ini
 
 # Logs
 *.log
+
+# Claude Code
+.claude/
+CLAUDE.md
+docs/
+archived/
