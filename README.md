@@ -27,9 +27,9 @@
 
 > 建设中
 
-## 参考资源
+## 插件推荐
 
-- [参考资料汇总](resources/references.md)
+- [优秀插件与工具推荐](plugins/recommended.md)
 
 ## 内容来源标注说明
 
