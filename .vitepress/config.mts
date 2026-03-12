@@ -6,7 +6,7 @@ export default defineConfig({
   description: '面向技术开发者的完整 Claude 教程与实践知识库',
 
   srcDir: '.',
-  srcExclude: ['archived/**', '.claude/**', 'node_modules/**', 'docs/**'],
+  srcExclude: ['archived/**', '.claude/**', 'node_modules/**', 'docs/**', 'resources/**', 'tmp/**'],
 
   themeConfig: {
     nav: [
@@ -15,7 +15,7 @@ export default defineConfig({
       { text: '提示词工程', link: '/prompt-engineering/input-quality' },
       { text: 'AI 编程思维', link: '/ai-dev-mindset/architecture' },
       { text: '工具集成', link: '/tool-integrations/mcp' },
-      { text: '资源', link: '/resources/references' },
+      { text: '插件推荐', link: '/plugins/recommended' },
     ],
 
     sidebar: {
@@ -59,11 +59,11 @@ export default defineConfig({
           ],
         },
       ],
-      '/resources/': [
+      '/plugins/': [
         {
-          text: '参考资源',
+          text: '插件推荐',
           items: [
-            { text: '参考资料汇总', link: '/resources/references' },
+            { text: '优秀插件与工具推荐', link: '/plugins/recommended' },
           ],
         },
       ],

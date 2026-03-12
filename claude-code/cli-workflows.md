@@ -190,3 +190,40 @@ bind-key C-c new-window \; send-keys "claude --continue" Enter \; \
 ```
 
 **评估：** 中价值。双终端工作流对重度用户有实际价值，但 session 日志 API 稳定性依赖版本，需自行验证当前版本支持情况。
+
+---
+
+## CLI 配套工具
+
+这些不是 Claude 插件，但能显著提升 Claude Code 的使用体验。
+
+### 必装
+
+| 工具 | 用途 | 为什么配合 Claude 好用 |
+|------|------|----------------------|
+| `jq` | JSON 处理 | Hooks 脚本中解析 Claude 输出的 JSON 必需 |
+| `ripgrep`（`rg`） | 极速搜索 | Claude 的 Grep 工具底层依赖 |
+| `fzf` | 模糊搜索 | 快速定位文件后用 `@` 引用给 Claude |
+| `gh` | GitHub CLI | 配合 Claude 做 PR review、Issue 管理 |
+
+### 推荐
+
+| 工具 | 用途 | 配合场景 |
+|------|------|----------|
+| `bat` | 带语法高亮的 cat | 审查 Claude 生成的代码更清晰 |
+| `delta` | Git diff 美化 | 对比 Claude 修改前后的差异 |
+| `tmux` | 终端复用 | 多窗口并行跑 Claude，互不干扰 |
+| `direnv` | 目录级环境变量 | 进入项目自动加载 MCP 所需的 API Key |
+
+**tmux 多窗口工作流示例：**
+
+```bash
+# 窗口 1：Claude 主会话
+claude
+
+# 窗口 2：Claude 跑测试（独立上下文）
+claude -p "运行所有测试并报告失败项"
+
+# 窗口 3：手动编辑 / git 操作
+vim src/index.ts
+```

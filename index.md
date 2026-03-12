@@ -10,8 +10,8 @@ hero:
       text: 开始阅读 →
       link: /claude-code/overview
     - theme: alt
-      text: 查看资源
-      link: /resources/references
+      text: 插件推荐
+      link: /plugins/recommended
 
 features:
   - icon: 🛠️
