@@ -15,21 +15,21 @@
 - [上下文管理策略](claude-code/context-management.md)
 - [Token 节省技巧与方案](claude-code/token-optimization.md)
 
-### 二、提示词工程
+### 二、插件与工具生态
+
+- [优秀插件与工具推荐](plugins/recommended.md) — MCP Server 精选、Claude Code 社区插件、选择原则
+
+### 三、提示词工程
 
 > 建设中
 
-### 三、AI 辅助编程思维
+### 四、AI 辅助编程思维
 
 > 建设中
 
-### 四、工具生态集成
+### 五、工具生态集成
 
 > 建设中
-
-## 插件推荐
-
-- [优秀插件与工具推荐](plugins/recommended.md)
 
 ## 内容来源标注说明
 

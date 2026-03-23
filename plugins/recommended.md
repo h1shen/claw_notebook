@@ -124,6 +124,62 @@ cd everything-claude-code
 
 > 🟡 **个人实践：** ECC 适合想要全面「开箱即用」的用户，Superpowers 适合追求精简纪律的用户。两者可以共存，但建议先选一个跑熟再叠加，避免 Skill 冲突。
 
+### Chrome CDP Skill
+
+| 项目 | 详情 |
+|------|------|
+| 作者 | Petr Baudiš (pasky) |
+| 仓库 | [pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill) |
+| 定位 | 让 AI Agent 直接连接你正在使用的 Chrome 浏览器 |
+| 推荐理由 | 🟢 2.6K+ stars，无需启动独立浏览器实例，直接操作已登录的标签页 |
+
+**核心特点：**
+
+- **连接活跃会话** — 不像 Puppeteer 等工具启动全新浏览器，chrome-cdp 直接通过 Chrome DevTools Protocol (CDP) WebSocket 连接你已经打开的 Chrome，Agent 可以读取你已登录的 Gmail、GitHub、内部工具等页面
+- **轻量守护进程** — 每个标签页一个后台 daemon 保持 WebSocket 连接，20 分钟无活动自动退出，避免反复弹出 "Allow debugging" 确认框
+- **零依赖** — 需要 Node.js 22+（使用内置 WebSocket），无需 `npm install`
+- **支持多种 Chromium 内核浏览器** — Chrome、Chromium、Brave、Edge、Vivaldi
+
+**命令速查：**
+
+| 命令 | 说明 |
+|------|------|
+| `list` | 列出所有打开的标签页 |
+| `shot <target>` | 截取视口截图，输出 DPR |
+| `snap <target>` | 获取无障碍树快照（推荐用 `--compact`） |
+| `eval <target> <expr>` | 在页面上下文中执行 JavaScript |
+| `click <target> <selector>` | 通过 CSS 选择器点击元素 |
+| `clickxy <target> <x> <y>` | 按 CSS 像素坐标点击 |
+| `type <target> <text>` | 向当前焦点输入文本（支持跨域 iframe） |
+| `nav <target> <url>` | 导航到指定 URL |
+| `html <target> [selector]` | 获取页面或元素 HTML |
+| `open [url]` | 打开新标签页 |
+
+**安装：**
+
+```bash
+# 方式一：pi 包管理器
+pi install git:github.com/pasky/chrome-cdp-skill@v1.0.2
+
+# 方式二：手动安装（适用于其他 Agent 框架）
+# 将 skills/chrome-cdp/ 目录复制到你的项目中即可
+```
+
+**前置步骤：**
+
+1. 需要 Node.js 22+
+2. 在 Chrome 地址栏打开 `chrome://inspect/#remote-debugging`，开启远程调试开关
+3. 首次连接每个标签页时会弹出一次 "Allow debugging" 确认
+
+**使用技巧：**
+
+- 优先用 `snap --compact` 而非 `html` 来理解页面结构，输出更精简
+- 跨域 iframe 中无法使用 `eval`，改用 `click`/`clickxy` 聚焦后 `type` 输入
+- `shot` 只截取视口范围，需要截取下方内容先用 `eval` 滚动页面
+- 避免跨多次 `eval` 调用使用索引选择器（如 `querySelectorAll(...)[i]`），DOM 可能在调用间变化
+
+> 🟡 **个人实践：** 这个工具最大的价值在于**免登录**——连接你已有的浏览器会话，Agent 可以直接操作需要认证的内部系统、后台管理页面，省去处理登录流程的麻烦。适合需要 Agent 帮你在网页上执行操作（抓数据、填表、测试）的场景。
+
 ---
 
 ## 选择插件的原则

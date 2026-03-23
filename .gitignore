@@ -27,6 +27,10 @@ docs/
 archived/
 tmp/
 
+# Scripts
+scripts/seen.json
+scripts/.env
+
 # VitePress
 .vitepress/dist/
 .vitepress/cache/
