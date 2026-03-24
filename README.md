@@ -17,7 +17,8 @@
 
 ### 二、插件与工具生态
 
-- [优秀插件与工具推荐](plugins/recommended.md) — MCP Server 精选、Claude Code 社区插件、选择原则
+- [MCP Server 精选](plugins/mcp-servers.md) — 按场景分类的 MCP Server 推荐与配置示例
+- [Claude Code 插件推荐](plugins/recommended.md) — 社区插件（ECC、Superpowers、Claude HUD、Chrome CDP）
 
 ### 三、提示词工程
 

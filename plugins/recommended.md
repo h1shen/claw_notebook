@@ -1,66 +1,14 @@
-# 优秀插件与工具推荐
+# Claude Code 插件推荐
 
-> 经过实际验证的 Claude 生态插件与配套工具，按使用场景分类。
+> 经过实际验证的 Claude Code 社区插件，扩展 Skills、Commands、Agents、Hooks 等能力。
+> 需要 Claude Code v2.1+，通过 `/plugin` 命令安装。
 > 标注说明：🔵 官方文档 / 🟢 社区经验 / 🟡 个人实践
+>
+> MCP Server 推荐见 → [mcp-servers.md](mcp-servers.md)
 
 ---
 
-## MCP Server 精选
-
-MCP（Model Context Protocol）是 Claude 连接外部工具的标准协议。以下是最值得安装的 MCP Server。
-
-### 文件与搜索
-
-| 名称 | 用途 | 推荐理由 |
-|------|------|----------|
-| `@anthropic/mcp-server-filesystem` | 文件读写 | 🔵 官方维护，让 Claude 直接操作指定目录 |
-| `@anthropic/mcp-server-memory` | 持久化记忆 | 🔵 跨会话记忆存储，用 JSON 知识图谱 |
-| `brave-search` | 网络搜索 | 🟢 免费额度充足，搜索质量好 |
-
-### 开发与 DevOps
-
-| 名称 | 用途 | 推荐理由 |
-|------|------|----------|
-| `@anthropic/mcp-server-github` | GitHub 操作 | 🔵 PR、Issue、代码搜索，团队协作必备 |
-| `@anthropic/mcp-server-postgres` | 数据库查询 | 🔵 只读模式安全查库，调试利器 |
-| `mcp-server-sqlite` | SQLite 操作 | 🟢 轻量数据库操作，适合本地项目 |
-| `docker-mcp` | Docker 管理 | 🟢 容器生命周期管理，免切终端 |
-
-### 知识与内容
-
-| 名称 | 用途 | 推荐理由 |
-|------|------|----------|
-| `mcp-server-fetch` | 网页抓取 | 🟢 将网页转为 Markdown 喂给 Claude |
-| `mcp-server-notion` | Notion 集成 | 🟢 读写 Notion 页面，知识库联动 |
-
-### 配置示例
-
-```json
-// .claude/settings.json
-{
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-filesystem", "/path/to/allowed/dir"]
-    },
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@anthropic/mcp-server-brave-search"],
-      "env": { "BRAVE_API_KEY": "your-key" }
-    }
-  }
-}
-```
-
-> 🟡 **个人实践：** 日常开发中 `filesystem` + `github` + `brave-search` 三件套覆盖 80% 场景，不需要装太多。MCP Server 越多，Claude 选择工具时的决策负担越重。
-
----
-
-## Claude Code 插件（Plugin）
-
-Claude Code v2.1+ 支持通过 `/plugin` 命令安装社区插件，扩展 Skills、Commands、Agents、Hooks 等能力。
-
-### 插件速览
+## 插件速览
 
 | 插件 | 定位 | Stars | 一句话推荐 |
 |------|------|-------|-----------|
@@ -71,7 +19,7 @@ Claude Code v2.1+ 支持通过 `/plugin` 命令安装社区插件，扩展 Skill
 
 ---
 
-### Everything Claude Code (ECC)
+## Everything Claude Code (ECC)
 
 > **完整的 Agent Harness 性能优化体系** — 🟢 50K+ stars
 > 作者：Affaan Mustafa | 仓库：[affaan-m/everything-claude-code](https://github.com/affaan-m/everything-claude-code)
@@ -106,7 +54,7 @@ cd everything-claude-code
 
 ---
 
-### Superpowers
+## Superpowers
 
 > **精练的 Skills 工作流库，专注开发纪律** — 🟢 覆盖 TDD、调试、计划、代码审查等关键流程
 > 作者：obra | 仓库：[obra/superpowers](https://github.com/obra/superpowers)
@@ -136,7 +84,7 @@ cd everything-claude-code
 
 ---
 
-### Claude HUD
+## Claude HUD
 
 > **实时 statusline HUD，终端内可视化监控** — 🟢 12K+ stars
 > 作者：Jarrod Watts | 仓库：[jarrodwatts/claude-hud](https://github.com/jarrodwatts/claude-hud)
@@ -180,7 +128,7 @@ Context █████░░░░░ 45% │ Usage ██░░░░░░░
 
 ---
 
-### Chrome CDP Skill
+## Chrome CDP Skill
 
 > **让 AI Agent 直接操控你正在使用的 Chrome 浏览器** — 🟢 2.6K+ stars
 > 作者：Petr Baudiš (pasky) | 仓库：[pasky/chrome-cdp-skill](https://github.com/pasky/chrome-cdp-skill)
@@ -232,8 +180,7 @@ pi install git:github.com/pasky/chrome-cdp-skill@v1.0.2
 ## 选择建议
 
 1. **少即是多** — 每多一个插件，Claude 决策时就多一层干扰
-2. **官方优先** — `@anthropic/` 前缀的 MCP Server 维护质量最可靠
-3. **先跑通再扩展** — 先用基础套件把流程跑通，再按需叠加
-4. **定期清理** — 一个月没用过的插件果断移除
+2. **先跑通再扩展** — 先选一个跑熟再叠加，避免 Skill 冲突
+3. **定期清理** — 一个月没用过的插件果断移除
 
 > **工具是手段，不是目的。最好的配置是你不需要想就能用的配置。**
